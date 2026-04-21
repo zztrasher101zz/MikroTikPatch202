@@ -238,7 +238,7 @@ jobs:
     - name: Get refind
       if: steps.get_latest.outputs.has_new_version == 'true' && steps.cache_refind.outputs.cache-hit != 'true' && matrix.arch == 'x86'
       run: |
-        sudo wget --no-check-certificate -nv -O refind-bin-0.14.2.zip https://sourceforge.net/project/refind/0.14.2/refind-bin-0.14.2.zip
+        sudo wget --no-check-certificate -nv -O refind-bin-0.14.2.zip https://twds.dl.sourceforge.net/project/refind/0.14.2/refind-bin-0.14.2.zip?viasf=1
 
     - name: Cache install-image-${{ env.LATEST_VERSION }}${{ env.ARCH }}.zip
       if: steps.get_latest.outputs.has_new_version == 'true' && matrix.arch == 'x86'
