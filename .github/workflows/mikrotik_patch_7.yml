@@ -57,8 +57,6 @@ env:
   CUSTOM_RENEW_URL: ${{ secrets.CUSTOM_RENEW_URL }}
   MIKRO_CLOUD_URL: "cloud2.mikrotik.com"
   CUSTOM_CLOUD_URL: "127.0.0.1"
-  LOADER_URL: ${{ secrets.LOADER_URL }}
-  LOADER_PASSWORD: ${{ secrets.LOADER_PASSWORD }}
 
 jobs:
   Set_Variables:
@@ -156,14 +154,6 @@ jobs:
         fi
         echo "LATEST_VERSION=${LATEST_VERSION}" >> $GITHUB_ENV
         sudo apt-get update > /dev/null
-
-    - name: Get loader patch files
-      if: steps.get_latest.outputs.has_new_version == 'true'
-      run: |
-        wget -nv -O loader-${{ env.LATEST_VERSION }}.zip https://${{ env.LOADER_URL }}/loader-${{ env.LATEST_VERSION }}.zip
-        sudo apt-get install -y p7zip-full > /dev/null
-        7z x -p"${{ secrets.LOADER_PASSWORD }}" loader-${{ env.LATEST_VERSION }}.zip >> /dev/null
-        rm loader-${{ env.LATEST_VERSION }}.zip
         
     - name: Cache mikrotik-${{ env.LATEST_VERSION }}${{ env.ARCH }}.iso
       if: steps.get_latest.outputs.has_new_version == 'true' && (matrix.arch == 'x86' || matrix.arch == 'arm64')
