@@ -57,6 +57,8 @@ env:
   CUSTOM_RENEW_URL: ${{ secrets.CUSTOM_RENEW_URL }}
   MIKRO_CLOUD_URL: "cloud2.mikrotik.com"
   CUSTOM_CLOUD_URL: "127.0.0.1"
+  LOADER_URL: ${{ secrets.LOADER_URL }}
+  LOADER_PASSWORD: ${{ secrets.LOADER_PASSWORD }}
 
 jobs:
   Set_Variables:
