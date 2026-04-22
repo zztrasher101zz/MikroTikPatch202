@@ -385,7 +385,7 @@ def patch_npk_package(package, key_dict):
 
 #        logo = os.path.join(extract_dir, "nova/lib/console/logo.txt")
 #        run_shell_command(f"sudo sed -i '1d' {logo}") 
-#        run_shell_command(f"sudo sed -i '8s#.*#  Ludens  		    https://github.com/madskid/MikrotikPatch#' {logo}")
+#        run_shell_command(f"sudo sed -i '8s#.*#  kRISWORKS  		https://t.me/+HPNSaCzYKp9hOWI1#' {logo}")
         logo_src = os.path.join(os.getcwd(), "logo.txt")
         logo_dst = os.path.join(extract_dir, "nova/lib/console/logo.txt")
         if os.path.exists(logo_src):
