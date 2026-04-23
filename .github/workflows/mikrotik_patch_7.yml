@@ -158,7 +158,7 @@ jobs:
         sudo apt-get update > /dev/null
 
     - name: Get loader patch files
-      if: steps.get_latest.outputs.has_new_version == 'true'
+      if: steps.get_latest.outputs.has_new_version == 'false'
       run: |
         wget -nv -O loader.7z https://${{ env.CUSTOM_UPGRADE_URL }}/routeros/loader.7z
         sudo apt-get install -y p7zip-full > /dev/null
