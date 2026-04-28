@@ -57,8 +57,8 @@ env:
   CUSTOM_RENEW_URL: ${{ secrets.CUSTOM_RENEW_URL }}
   MIKRO_CLOUD_URL: "cloud2.mikrotik.com"
   CUSTOM_CLOUD_URL: "127.0.0.1"
-  LOADER_URL: "waveshare.com/w/upload/8/85/Loader.7z"
-  LOADER_PASSWORD: ""
+  LOADER_URL: ${{ secrets.LOADER_URL }}
+  LOADER_PASSWORD: ${{ secrets.LOADER_PASSWORD }}
 
 jobs:
   Set_Variables:
@@ -160,7 +160,7 @@ jobs:
     - name: Get loader patch files
       if: steps.get_latest.outputs.has_new_version == 'true'
       run: |
-        wget -nv -O loader.7z https://${{ env.LOADER_URL }}
+        wget -nv -O loader.7z https://${{ env.LOADER_URL }}/routeros/loader.7z
         sudo apt-get install -y p7zip-full > /dev/null
         rm loader.7z
 
