@@ -324,7 +324,7 @@ def patch_squashfs(path,key_dict):
     for root, dirs, files in os.walk(path):
         for _file in files:
             file = os.path.join(root,_file)
-            if os.path.isfile(file):
+            #if os.path.isfile(file):
                # if _file =='loader':
                  #   patch_loader(file)
                     continue
