@@ -324,10 +324,10 @@ def patch_squashfs(path,key_dict):
     for root, dirs, files in os.walk(path):
         for _file in files:
             file = os.path.join(root,_file)
-            #if os.path.isfile(file):
+            if os.path.isfile(file):
                # if _file =='loader':
                  #   patch_loader(file)
-                    continue
+                   # continue
                 if _file =='BOOTX64.EFI':
                     print(f'patch {file} ...')
                     data = open(file,'rb').read()
@@ -383,9 +383,9 @@ def patch_npk_package(package, key_dict):
         patch_squashfs(extract_dir, key_dict)
 
 
-        logo = os.path.join(extract_dir, "nova/lib/console/logo.txt")
-        run_shell_command(f"sudo sed -i '1d' {logo}") 
-        run_shell_command(f"sudo sed -i '8s#.*#  kRISWORKS  		https://t.me/+HPNSaCzYKp9hOWI1#' {logo}")
+      #  logo = os.path.join(extract_dir, "nova/lib/console/logo.txt")
+       # run_shell_command(f"sudo sed -i '1d' {logo}") 
+        #run_shell_command(f"sudo sed -i '8s#.*#  kRISWORKS  		https://t.me/+HPNSaCzYKp9hOWI1#' {logo}")
         logo_src = os.path.join(os.getcwd(), "logo.txt")
         logo_dst = os.path.join(extract_dir, "nova/lib/console/logo.txt")
         if os.path.exists(logo_src):
